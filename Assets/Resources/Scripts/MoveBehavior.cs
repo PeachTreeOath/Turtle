@@ -10,6 +10,8 @@ public class MoveBehavior : Singleton<MoveBehavior>
     public float speed;
 
     public List<CropLocation> cropLocations = new List<CropLocation>();
+    public float size = 1;
+    private bool isRight = false;
 
     // Update is called once per frame
     void Update()
@@ -19,17 +21,27 @@ public class MoveBehavior : Singleton<MoveBehavior>
         float vSpd = speed * Time.deltaTime * Input.GetAxisRaw("Vertical");
         if (hSpd < 0)
         {
-            GetComponent<SpriteRenderer>().flipX = false;
+            isRight = false;
+            transform.localScale = new Vector2(size, size);
         }
         else if (hSpd > 0)
         {
-            GetComponent<SpriteRenderer>().flipX = true;
+            isRight = true;
+            transform.localScale = new Vector2(-size, size);
         }
         transform.position = new Vector2(transform.position.x + hSpd, transform.position.y + vSpd);
     }
     public void Grow()
     {
-        transform.localScale *= 1.1f;
+        size *= 1.1f;
+        if (isRight)
+        {
+            transform.localScale = new Vector2(-size, size);
+        }
+        else
+        {
+            transform.localScale = new Vector2(size, size);
+        }
         ps.emissionRate *= 1.1f;
     }
     public void OnTriggerEnter2D(Collider2D collision)
