@@ -58,6 +58,8 @@ MonoBehaviour:
   c: {fileID: 21300000, guid: a1130c9c4741811459813d82c1a19cef, type: 3}
   type: 0
   loc: {fileID: 0}
+  burstPrefab: {fileID: 1079608705865374, guid: 69e07129aab68b046ba857dd3bd81c05,
+    type: 2}
 --- !u!212 &212130726334401494
 SpriteRenderer:
   m_ObjectHideFlags: 1

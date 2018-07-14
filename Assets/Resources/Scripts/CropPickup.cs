@@ -10,12 +10,20 @@ public class CropPickup : MonoBehaviour
     public Sprite c;
 
     public int type;
+    private float spinOffset;
+    public float spinSpeed;
 
     private void Start()
     {
         SetType(type);
+        spinOffset = Random.Range(0, 10000);
     }
 
+    void Update()
+    {
+        float spin = (spinSpeed * Time.deltaTime);
+        transform.Rotate(new Vector3(0, spin, 0));
+    }
 
     public void SetType(int type)
     {

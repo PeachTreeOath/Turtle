@@ -5,6 +5,7 @@ using UnityEngine;
 public class MoveBehavior : Singleton<MoveBehavior>
 {
     public GameObject cropGrowerPrefab;
+    public ParticleSystem ps;
 
     public float speed;
 
@@ -18,17 +19,18 @@ public class MoveBehavior : Singleton<MoveBehavior>
         float vSpd = speed * Time.deltaTime * Input.GetAxisRaw("Vertical");
         if (hSpd < 0)
         {
-            GetComponent<SpriteRenderer>().flipX = true;
+            GetComponent<SpriteRenderer>().flipX = false;
         }
         else if (hSpd > 0)
         {
-            GetComponent<SpriteRenderer>().flipX = false;
+            GetComponent<SpriteRenderer>().flipX = true;
         }
         transform.position = new Vector2(transform.position.x + hSpd, transform.position.y + vSpd);
     }
     public void Grow()
     {
         transform.localScale *= 1.1f;
+        ps.emissionRate *= 1.1f;
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -49,6 +51,7 @@ public class MoveBehavior : Singleton<MoveBehavior>
                     break;
                 }
             }
+
 
             Destroy(crop.gameObject);
         }

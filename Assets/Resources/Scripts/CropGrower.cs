@@ -14,6 +14,8 @@ public class CropGrower : MonoBehaviour {
 
     public CropLocation loc;
 
+    public GameObject burstPrefab;
+
     // Use this for initialization
     void Start () {
         SetType(type);
@@ -30,6 +32,8 @@ public class CropGrower : MonoBehaviour {
         {
             MoveBehavior.instance.Grow();
             loc.isOccupied = false;
+            GameObject burst = Instantiate(burstPrefab);
+            burst.transform.position = transform.position;
             Destroy(gameObject);
         }
         
