@@ -28,13 +28,16 @@ public class CropGrower : MonoBehaviour {
 
         if(transform.localScale.x > 1)
         {
-
+            MoveBehavior.instance.Grow();
+            loc.isOccupied = false;
+            Destroy(gameObject);
         }
-        //todo: destory and remove from loc too
+        
     }
 
-    public void SetType(int type)
+    public void SetType(int newType)
     {
+        type = newType;
         switch (type)
         {
             case 0:

@@ -26,7 +26,10 @@ public class MoveBehavior : Singleton<MoveBehavior>
         }
         transform.position = new Vector2(transform.position.x + hSpd, transform.position.y + vSpd);
     }
-
+    public void Grow()
+    {
+        transform.localScale *= 1.1f;
+    }
     public void OnTriggerEnter2D(Collider2D collision)
     {
         CropPickup crop = collision.GetComponent<CropPickup>();
@@ -46,6 +49,8 @@ public class MoveBehavior : Singleton<MoveBehavior>
                     break;
                 }
             }
+
+            Destroy(crop.gameObject);
         }
     }
 }
