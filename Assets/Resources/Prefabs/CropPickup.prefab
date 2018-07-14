@@ -93,7 +93,7 @@ MonoBehaviour:
   b: {fileID: 21300000, guid: 51acdd5a2bfbabf40a6bf5c5fd0ab1e9, type: 3}
   c: {fileID: 21300000, guid: d02e24c4ddd4e6e418496db578193995, type: 3}
   type: 0
-  spinSpeed: 100
+  spinSpeed: 250
 --- !u!212 &212598943513682076
 SpriteRenderer:
   m_ObjectHideFlags: 1

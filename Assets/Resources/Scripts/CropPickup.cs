@@ -21,7 +21,7 @@ public class CropPickup : MonoBehaviour
 
     void Update()
     {
-        float spin = (spinSpeed * Time.deltaTime);
+        float spin = spinSpeed * Time.deltaTime;
         transform.Rotate(new Vector3(0, spin, 0));
     }
 
